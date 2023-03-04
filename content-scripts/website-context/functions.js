@@ -26,7 +26,7 @@ ImprovedTube.ytElementsHandler = function (node) {
 			if (node.className.indexOf('ytd-thumbnail') !== -1) {
 				this.blacklist('video', node);
 			}
-			if (node.href.match(/(channel|user|c)\/([^/]+)/)) {
+			if (node.href.match(/@|((channel|user|c)\/)([^/]+)/)) {
 				this.blacklist('channel', node);
 			}
 		}
@@ -69,9 +69,7 @@ ImprovedTube.ytElementsHandler = function (node) {
 		this.improvedtubeYoutubeIcon();
 		this.improvedtubeYoutubeButtonsUnderPlayer();
 
-		if(document.documentElement.dataset.pageType === 'video'){
-            this.hideDetailButton(node.querySelector('#menu #top-level-buttons-computed').children);
-        }
+
 	} else if (name === 'YTD-VIDEO-SECONDARY-INFO-RENDERER') {
 		this.elements.yt_channel_name = node.querySelector('ytd-channel-name');
 		this.elements.yt_channel_link = node.querySelector('ytd-channel-name a');
@@ -80,6 +78,10 @@ ImprovedTube.ytElementsHandler = function (node) {
 			this.howLongAgoTheVideoWasUploaded();
 			this.channelVideosCount();
 		}
+	} else if (name === 'YTD-MENU-RENDERER' && node.classList.contains('ytd-video-primary-info-renderer')) {
+		if(document.documentElement.dataset.pageType === 'video'){
+            this.hideDetailButton(node.$['flexible-item-buttons'].children);
+        }
 	} else if (name === 'YTD-SUBSCRIBE-BUTTON-RENDERER') {
 		if (node.className.indexOf('ytd-c4-tabbed-header-renderer') !== -1) {
 			ImprovedTube.blacklist('channel', node);
@@ -204,7 +206,7 @@ ImprovedTube.ytElementsHandler = function (node) {
 		}	   
         //old
 	}else if (name === 'TP-YT-PAPER-BUTTON') {
-        if (document.documentElement.dataset.pageType === 'video' && id === 'more' && node.parentNode.parentNode.id === 'container') {
+        if (document.documentElement.dataset.pageType === 'video' && id === 'more' && node.classList.contains('ytd-expander')) {
             setTimeout(function () {
                	 	ImprovedTube.description(node);
             }, 750);
@@ -213,13 +215,13 @@ ImprovedTube.ytElementsHandler = function (node) {
 };
 
 ImprovedTube.pageType = function () {
-	if (location.pathname === '/') {
-		document.documentElement.dataset.pageType = 'home';
-	} else if (/\/subscriptions\?/.test(location.href)) {
-		document.documentElement.dataset.pageType = 'subscriptions';
-	} else if (/\/watch\?/.test(location.href)) {
+	if (/^\/watch\?/.test(location.pathname)) {
 		document.documentElement.dataset.pageType = 'video';
-	} else if (/\/channel|\/user|\/c\/|\/@/.test(location.href)) {
+	} else if (location.pathname === '/') {
+		document.documentElement.dataset.pageType = 'home';
+	} else if (/^\/subscriptions\?/.test(location.pathname)) {
+		document.documentElement.dataset.pageType = 'subscriptions';
+	} else if (/^\/@|((channel|user|c)\/)[^/]+(?!\/videos)/.test(location.pathname)) {
 		document.documentElement.dataset.pageType = 'channel';
 	} else {
 		document.documentElement.dataset.pageType = 'other';

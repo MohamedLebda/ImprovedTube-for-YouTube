@@ -73,7 +73,38 @@ ImprovedTube.myColors = function () {
 		this.elements.my_colors = style;
 
 		document.documentElement.appendChild(style);
+<<<<<<< HEAD
 	} else if (this.elements.my_colors) {
 		this.elements.my_colors.remove();
+=======
+	} else {
+		if (this.elements.my_colors) {
+			this.elements.my_colors.remove();
+		}
+
+		pref = '';
+		cookieValue = '400';
+		if (document.cookie.match(/PREF\=([^\s]*(?=\;)|[^\s]*$)/)) {
+			pref = document.cookie.match(/PREF\=([^\s]*(?=\;)|[^\s]*$)/)[1];
+		}
+
+		if (this.storage.theme === 'dark' || this.storage.theme === 'black') {
+			if (!document.documentElement.hasAttribute('dark')) {
+				document.documentElement.setAttribute('dark', '');
+			}
+		} else {
+			if (document.documentElement.hasAttribute('dark')) {
+				cookieValue = '80000';
+				document.documentElement.removeAttribute('dark');
+			}
+		}
+
+		if (pref.match(/(f6=)[^\&]+/)){
+			cookieValue = pref.replace(/(f6=)[^\&]+/, cookieValue);
+		} else {
+			cookieValue = pref + "&f6=" + cookieValue;
+		}
+		ImprovedTube.setCookie('PREF', cookieValue);
+>>>>>>> 4c55c03dffd680062ba0e5806ff3519eb5d52628
 	}
 };

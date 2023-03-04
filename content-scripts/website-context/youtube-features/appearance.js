@@ -292,6 +292,7 @@ ImprovedTube.description = function (el) {
     }
 };
 
+<<<<<<< HEAD
 /*------------------ailButton = function (el) {
     setTimeout(function () {
         for (var i = 2; i < el.length; i++) {
@@ -309,6 +310,22 @@ ImprovedTube.description = function (el) {
             }
         }
     }, 30);
+=======
+/*------------------------------------------------------------------------------
+4.2.3.4 HIDE DETAIL BUTTON
+------------------------------------------------------------------------------*/
+
+ImprovedTube.hideDetailButton = function (el) {
+    if (el.length === 4) {
+        el[3].setAttribute("id", "Save-button");
+        el[2].setAttribute("id", "Clip-button");
+        el[1].setAttribute("id", "Thanks-button");
+    }
+    else if (el.length === 3) {
+        el[2].setAttribute("id", "Save-button");
+        el[1].setAttribute("id", "Clip-button");
+    }
+>>>>>>> 4c55c03dffd680062ba0e5806ff3519eb5d52628
 };
 
 /*--------------------------------------------------------------
