@@ -7,7 +7,7 @@
 ------------------------------------------------------------------------------*/
 
 ImprovedTube.autoplay = function () {
-    var video = ImprovedTube.elements.player;
+	var video = ImprovedTube.elements.player;
     if (ImprovedTube.video_url !== location.href) {
         ImprovedTube.allow_autoplay = false;
 		ImprovedTube.video_url = location.href

@@ -6,9 +6,9 @@
 4.3.1 MY COLORS
 ------------------------------------------------------------------------------*/
 
-ImprovedTube.myColors = function () {
+ImprovedTube.themes = function () {
 	if (
-		this.storage.theme === 'my-colors' &&
+		this.storage.theme === 'custom' &&
 		Array.isArray(this.storage.theme_primary_color) &&
 		Array.isArray(this.storage.theme_text_color)
 	) {
@@ -68,15 +68,15 @@ ImprovedTube.myColors = function () {
 			'--yt-spec-brand-subscribe-button-background:' + text_color + ' !important;' +
 			'--yt-spec-wordmark-text:' + text_color + ' !important;' +
 			'--yt-spec-selected-nav-text:' + text_color + ' !important;' +
+			'--yt-spec-base-background:' + primary_color + '!important;' +
+			'--yt-spec-raised-background:' + primary_color + '!important;' +
+			'--yt-spec-menu-background:' + primary_color + '!important;' +
+			'--yt-spec-inverted-background: #fff;' +
 			'}';
 
 		this.elements.my_colors = style;
 
 		document.documentElement.appendChild(style);
-<<<<<<< HEAD
-	} else if (this.elements.my_colors) {
-		this.elements.my_colors.remove();
-=======
 	} else {
 		if (this.elements.my_colors) {
 			this.elements.my_colors.remove();
@@ -105,6 +105,5 @@ ImprovedTube.myColors = function () {
 			cookieValue = pref + "&f6=" + cookieValue;
 		}
 		ImprovedTube.setCookie('PREF', cookieValue);
->>>>>>> 4c55c03dffd680062ba0e5806ff3519eb5d52628
 	}
 };

@@ -2,11 +2,7 @@
 	"manifest_version": 3,
 	"name": "'Improve YouTube!'🎧(for YouTube & Videos)",
 	"description": "__MSG_description_ext__",
-<<<<<<< HEAD
-	"version": "4.0.1",
-=======
 	"version": "4.0.36",
->>>>>>> 4c55c03dffd680062ba0e5806ff3519eb5d52628
 	"default_locale": "en",
 	"icons": {
 		"128": "assets/icons/128.png",

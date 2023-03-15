@@ -612,9 +612,6 @@ ImprovedTube.shortcutSubscribe = function () {
 ------------------------------------------------------------------------------*/
 
 ImprovedTube.shortcutDarkTheme = function () {
-<<<<<<< HEAD
-	if (document.documentElement.hasAttribute('dark')) {
-=======
 	pref = '';
 	cookieValue = '400';
 	if (document.cookie.match(/PREF\=([^\s]*(?=\;)|[^\s]*$)/)) {
@@ -623,7 +620,6 @@ ImprovedTube.shortcutDarkTheme = function () {
 
 	if (document.documentElement.hasAttribute('dark')) {
 		cookieValue = '80000';
->>>>>>> 4c55c03dffd680062ba0e5806ff3519eb5d52628
 		document.documentElement.removeAttribute('dark');
 		document.documentElement.removeAttribute('it-theme');
 	} else {

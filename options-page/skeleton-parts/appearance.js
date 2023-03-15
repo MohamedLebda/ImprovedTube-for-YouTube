@@ -426,6 +426,10 @@ extension.skeleton.main.layers.section.appearance.on.click.player = {
                 text: "hideScrollForDetails",
                 tags: "remove,hide",
             },
+            comments_sidebar_position: {
+                component: "switch",
+                text: "commentsSidebarPosition",
+            },
         },
     },
 };
