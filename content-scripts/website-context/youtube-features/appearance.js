@@ -157,7 +157,7 @@ ImprovedTube.commentsSidebarPosition=()=>{
         document.querySelector("#columns").appendChild(document.querySelector("#comments"),function() {
             console.log("comments and its children have been appended to columns")})
         document.querySelector("#primary-inner").appendChild(document.querySelector("#secondary"),function() {
-            console.log("secondary and its children have been appended to primary- inner")})
+            console.log("secondary and its children have been appended to primary-inner")})
     }else{
         document.querySelector("#columns").appendChild(document.querySelector("#secondary"))
         document.querySelector("#below").appendChild(document.querySelector("#comments"))
@@ -170,10 +170,18 @@ ImprovedTube.commentsSidebarPosition=()=>{
 /*------------------------------------------------------------------------------
 4.2.2.1 LIVECHAT
 ------------------------------------------------------------------------------*/
-
+let isCollapsed = false
 ImprovedTube.livechat = function () {
     if (this.storage.livechat === "collapsed") {
-        ImprovedTube.elements.livechat.button.click();
+        if(ImprovedTube.elements.livechat && !isCollapsed){
+            ImprovedTube.elements.livechat.button.click();
+            isCollapsed = true 
+        }
+    }else{
+        if(isCollapsed){
+            ImprovedTube.elements.livechat.button.click();
+            isCollapsed = false
+        }
     }
 };
 
@@ -300,8 +308,9 @@ ImprovedTube.channelVideosCount = function () {
 
 ImprovedTube.description = function (el) {
     if (this.storage.description === "expanded") {
-        el.click();
-    }
+        if(el){el.click();} else {document.querySelector("#more").click();}
+		}
+	else if (this.storage.description === "normal") {document.querySelector("#less").click();}
 };
 
 /*------------------------------------------------------------------------------

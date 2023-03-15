@@ -81,6 +81,7 @@ ImprovedTube.themes = function () {
 		if (this.elements.my_colors) {
 			this.elements.my_colors.remove();
 		}
+<<<<<<< HEAD
 
 		pref = '';
 		cookieValue = '400';
@@ -96,6 +97,22 @@ ImprovedTube.themes = function () {
 			if (document.documentElement.hasAttribute('dark')) {
 				cookieValue = '80000';
 				document.documentElement.removeAttribute('dark');
+=======
+		if (this.storage.theme === 'default' ){
+			if (document.documentElement.hasAttribute('it-themes') === true){
+				document.documentElement.setAttribute('it-themes', 'false');
+				location.reload();
+			}
+		} else if (this.storage.theme === 'dark' || this.storage.theme === 'black') {
+			if (!document.documentElement.hasAttribute('dark')) {
+				document.documentElement.setAttribute('dark', '');
+				document.documentElement.setAttribute('it-themes', 'true');
+			}
+		} else {
+			if (document.documentElement.hasAttribute('dark')) {
+				document.documentElement.removeAttribute('dark');
+				document.documentElement.removeAttribute('it-themes');
+>>>>>>> 354c4f9993cf51414d672bd9ae68839814652e6f
 			}
 		}
 

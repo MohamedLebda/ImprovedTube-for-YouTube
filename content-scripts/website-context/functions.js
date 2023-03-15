@@ -88,9 +88,9 @@ ImprovedTube.ytElementsHandler = function (node) {
 		}
 
 		ImprovedTube.elements.subscribe_button = node;
-	} else if (id === 'chat') {
-		this.elements.livechat.button = node.querySelector('ytd-toggle-button-renderer');
-
+	} else if (id === 'show-hide-button') {
+		this.elements.livechat.button = document.querySelector('[aria-label="Hide chat"]');
+		// console.log(document.querySelector('[aria-label="Hide chat"]'))
 		this.livechat();
 	} else if (name === 'YTD-MASTHEAD') {
 		if (!this.elements.masthead) {
@@ -206,7 +206,11 @@ ImprovedTube.ytElementsHandler = function (node) {
 		}	   
         //old
 	}else if (name === 'TP-YT-PAPER-BUTTON') {
+<<<<<<< HEAD
         if (document.documentElement.dataset.pageType === 'video' && id === 'more' && node.classList.contains('ytd-expander')) {
+=======
+        if (document.documentElement.dataset.pageType === 'video' && id === 'more' && node.classList.contains('ytd-expander') || (node.parentNode.parentNode !== null && node.parentNode.parentNode.id === 'container')) {
+>>>>>>> 354c4f9993cf51414d672bd9ae68839814652e6f
             setTimeout(function () {
                	 	ImprovedTube.description(node);
             }, 750);
@@ -215,6 +219,7 @@ ImprovedTube.ytElementsHandler = function (node) {
 };
 
 ImprovedTube.pageType = function () {
+<<<<<<< HEAD
 	if (/^\/watch\?/.test(location.pathname)) {
 		document.documentElement.dataset.pageType = 'video';
 	} else if (location.pathname === '/') {
@@ -222,6 +227,15 @@ ImprovedTube.pageType = function () {
 	} else if (/^\/subscriptions\?/.test(location.pathname)) {
 		document.documentElement.dataset.pageType = 'subscriptions';
 	} else if (/^\/@|((channel|user|c)\/)[^/]+(?!\/videos)/.test(location.pathname)) {
+=======
+	if (/\/watch\?/.test(location.href)) {
+		document.documentElement.dataset.pageType = 'video';
+	} else if (location.pathname === '/') {
+		document.documentElement.dataset.pageType = 'home';
+	} else if (/\/subscriptions\?/.test(location.href)) {
+		document.documentElement.dataset.pageType = 'subscriptions';
+	} else if (/\/@|((channel|user|c)\/)[^/]+(?!\/videos)/.test(location.href)) {
+>>>>>>> 354c4f9993cf51414d672bd9ae68839814652e6f
 		document.documentElement.dataset.pageType = 'channel';
 	} else {
 		document.documentElement.dataset.pageType = 'other';
