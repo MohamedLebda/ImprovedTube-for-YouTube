@@ -157,7 +157,7 @@ ImprovedTube.commentsSidebarPosition=()=>{
         document.querySelector("#columns").appendChild(document.querySelector("#comments"),function() {
             console.log("comments and its children have been appended to columns")})
         document.querySelector("#primary-inner").appendChild(document.querySelector("#secondary"),function() {
-            console.log("secondary and its children have been appended to primary-inner")})
+            console.log("secondary and its children have been appended to primary- inner")})
     }else{
         document.querySelector("#columns").appendChild(document.querySelector("#secondary"))
         document.querySelector("#below").appendChild(document.querySelector("#comments"))
